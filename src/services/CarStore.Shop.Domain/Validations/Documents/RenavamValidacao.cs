@@ -5,7 +5,7 @@ namespace CarStore.Shop.Domain.Validations.Documents;
 public static class RenavamValidacao
 {
 
-    public const int TamanhoRenavam = 11;
+    public const int LengthRenavam = 11;
 
     public static bool Validate(string renavam)
     {
@@ -15,7 +15,7 @@ public static class RenavamValidacao
         return !HasRepeatedDigits(number) && HaveValidDigits(number);
     }
 
-    private static bool SizeValid(string value) => value.Length == TamanhoRenavam;
+    private static bool SizeValid(string value) => value.Length == LengthRenavam;
 
     private static bool HasRepeatedDigits(string value)
     {

@@ -12,7 +12,7 @@ public class VehicleValidation : AbstractValidator<Vehicle>
             .NotEmpty().WithMessage("The field {PropertyName} needs to be provided")
             .Length(2, 50).WithMessage("The field {PropertyName} need to be between {MinLength} e {MaxLength} characters");
 
-        RuleFor(x => x.Renavam.Length).Equal(RenavamValidacao.TamanhoRenavam)
+        RuleFor(x => x.Renavam.Length).Equal(RenavamValidacao.LengthRenavam)
                 .WithMessage("The field Document need to have {ComparisonValue} characters and was provided {PropertyValue}.");
 
         RuleFor(x => x.BrandId)

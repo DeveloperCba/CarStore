@@ -8,8 +8,8 @@ public interface IOwnerRepository : IRepository<Owner>
 {
     Task<IEnumerable<Owner>> GetAll(Expression<Func<Owner, bool>> filter = null);
     Task<Owner> GetById(Guid modelId);
-    Task<bool> Add(Owner model);
-    Task<bool> Update(Owner model);
+    Task Add(Owner model);
+    Task Update(Owner model);
     Task<Address> GetAddressById(Guid id);
-    Task<bool> UpdateAddress(Address model);
+    Task UpdateAddress(Address model);
 }

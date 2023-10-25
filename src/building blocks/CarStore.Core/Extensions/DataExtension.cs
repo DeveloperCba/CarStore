@@ -126,23 +126,25 @@ public static class DataExtension
     public static DataTable CSVToDataTable(this Stream csvFile, char separator)
     {
         var dataTable = new DataTable();
-        using (var streamReader = new StreamReader(csvFile, Encoding.GetEncoding("iso-8859-1")))
+        using var streamReader = new StreamReader(csvFile, Encoding.GetEncoding("iso-8859-1"));
+        var headers = streamReader?.ReadLine()?.Split(separator);
+        if (headers == null) return dataTable;
+            
+        foreach (var header in headers)
+            dataTable.Columns.Add(header);
+
+        while (streamReader != null && !streamReader.EndOfStream)
         {
-            var headers = streamReader?.ReadLine()?.Split(separator);
-            foreach (string header in headers)
-                dataTable.Columns.Add(header);
+            var rows = streamReader.ReadLine()?.Split(separator);
+            var dataRow = dataTable.NewRow();
 
-            while (!streamReader.EndOfStream)
-            {
-                var rows = streamReader?.ReadLine()?.Split(separator);
-                var dataRow = dataTable.NewRow();
-
-                for (int i = 0; i < headers.Length; i++)
+            for (var i = 0; i < headers.Length; i++)
+                if (rows != null)
                     dataRow[i] = rows[i];
 
-                dataTable.Rows.Add(dataRow);
-            }
+            dataTable.Rows.Add(dataRow);
         }
+
         return dataTable;
     }
 

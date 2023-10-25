@@ -9,14 +9,16 @@ public abstract class Entity
     public DateTime CreatedAt { get; set; }
     public DateTime? UpdatedAt { get; set; }
 
+    
+
+    private List<Event>? _notifications;
+
+    public IReadOnlyCollection<Event>? GetNotifications() => _notifications?.AsReadOnly();
+
     protected Entity()
     {
         Id = Guid.NewGuid();
     }
-
-    private List<Event> _notifications;
-    public IReadOnlyCollection<Event> Notifications => _notifications?.AsReadOnly();
-
     public void AddEvent(Event @event)
     {
         _notifications = _notifications ?? new List<Event>();
@@ -31,15 +33,6 @@ public abstract class Entity
     public void ClearEvent()
     {
         _notifications?.Clear();
-    }
-
-    protected bool ExecuteValidation<TV, TE>(TV validacao, TE entidade) where TV : AbstractValidator<TE> where TE : Entity
-    {
-        var validator = validacao.Validate(entidade);
-
-        if (validator.IsValid) return true;
-
-        return false;
     }
 
     public virtual bool IsValid()

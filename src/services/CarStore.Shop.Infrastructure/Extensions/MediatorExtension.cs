@@ -10,10 +10,10 @@ public static class MediatorExtension
     {
         var domainEntities = ctx.ChangeTracker
             .Entries<Entity>()
-            .Where(x => x.Entity.Notifications != null && x.Entity.Notifications.Any());
+            .Where(x => x.Entity.GetNotifications() != null && x.Entity.GetNotifications().Any());
 
         var domainEvents = domainEntities
-            .SelectMany(x => x.Entity.Notifications)
+            .SelectMany(x => x.Entity.GetNotifications())
             .ToList();
 
         domainEntities.ToList()

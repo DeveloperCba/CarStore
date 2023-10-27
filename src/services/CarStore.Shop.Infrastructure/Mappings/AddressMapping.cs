@@ -18,13 +18,11 @@ public class AddressMapping : EntityMapping<Address>
         builder.Property(x => x.Neighborhood).HasMaxLength(100).IsRequired();
         builder.Property(x => x.City).HasMaxLength(100).IsRequired();
         builder.Property(x => x.State).HasMaxLength(50).IsRequired();
-        builder.Property(x => x.Owner).HasMaxLength(36);
+        //builder.Property(x => x.OwnerId).HasMaxLength(36);
 
-        builder.HasData(
-            new Address("Rua 10", "01", "Quadra 15", "Centro", "78098000", "Cuiabá", "MT", Guid.Empty),
-            new Address("Rua Brazil", "10", "Quadra 36", "Porto", "78098000", "Cuiabá", "MT", Guid.Empty),
-            new Address("Rua Orquideas", "01", "Quadra 98", "Jardim Universitário", "78098000", "Cuiabá", "MT", Guid.Empty),
-            new Address("Rua 42", "395", "Quadra 70", "Jardim Imperial", "78098000", "Cuiabá", "MT", Guid.Empty)
-            );
+        //builder.HasOne(x=>x.Owner)
+        //    .WithMany(x=>x.Addresses)
+        //    .HasForeignKey(x=>x.OwnerId);
+            
     }
 }

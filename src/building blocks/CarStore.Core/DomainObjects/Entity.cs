@@ -21,7 +21,7 @@ public abstract class Entity
     }
     public void AddEvent(Event @event)
     {
-        _notifications = _notifications ?? new List<Event>();
+        _notifications ??= new List<Event>();
         _notifications.Add(@event);
     }
 
@@ -41,7 +41,7 @@ public abstract class Entity
     }
 
     #region Comparações
-    public override bool Equals(object obj)
+    public override bool Equals(object? obj)
     {
         var compareTo = obj as Entity;
 

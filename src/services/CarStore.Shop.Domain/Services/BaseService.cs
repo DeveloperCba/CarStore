@@ -1,10 +1,11 @@
 ﻿using CarStore.Core.DomainObjects;
+using CarStore.Core.Messages;
 using FluentValidation;
 using FluentValidation.Results;
 
 namespace CarStore.Shop.Domain.Services;
 
-public abstract class BaseService
+public abstract class BaseService 
 {
     private readonly INotify _notify;
 

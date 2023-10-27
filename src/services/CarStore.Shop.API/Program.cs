@@ -1,25 +1,53 @@
-var builder = WebApplication.CreateBuilder(args);
+using CarStore.Shop.API.Configurations;
+using Microsoft.AspNetCore.Mvc.ApiExplorer;
 
-// Add services to the container.
+namespace CarStore.Shop.API;
 
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
-var app = builder.Build();
-
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+public class Program
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    private static void Main(string[] args)
+    {
+        var builder = WebApplication.CreateBuilder(args);
+
+        #region Configure Services
+
+
+        builder.Configuration
+            .SetBasePath(builder.Environment.ContentRootPath)
+            .AddJsonFile("appsettings.json", true, true)
+            .AddJsonFile($"appsettings.{builder.Environment.EnvironmentName}.json", true, true)
+            .AddEnvironmentVariables();
+
+        builder.Services.AddControllers();
+
+        builder.Services.AddEndpointsApiExplorer();
+
+        builder.Services.AddDependencyInjection(builder.Configuration);
+
+        builder.Services.AddAutoMapper(typeof(Program));
+
+        builder.Services.AddApiConfiguration(builder.Configuration);
+
+        builder.Services.AddSwaggerConfiguration();
+
+
+
+        var app = builder.Build();
+
+        #endregion
+
+
+        #region Configure Pipeline
+
+        var provider = app.Services.GetService<IApiVersionDescriptionProvider>();
+
+        app.UseSwaggerConfiguration(provider);
+
+        app.UseApiConfiguration(builder.Environment, builder.Configuration);
+
+        app.Run();
+
+        #endregion
+    }
+
 }
-
-app.UseHttpsRedirection();
-
-app.UseAuthorization();
-
-app.MapControllers();
-
-app.Run();

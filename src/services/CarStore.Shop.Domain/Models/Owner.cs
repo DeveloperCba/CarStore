@@ -12,13 +12,11 @@ public class Owner : Entity, IAggregateRoot
     public TypeStatus Status { get; private set; }
     public OwnerType OwnerType { get; private set; }
 
-    public Guid AddressId { get; private set; }
-    public Address Address { get; private set; } = null!;
-
     public Email Email { get; private set; } = null!;
 
     // EF Relation
     public Vehicle Vehicle { get; protected set; } = null!;
+    public Address Address { get; protected set; } = null!;
 
     protected Owner() { }
 
@@ -35,7 +33,6 @@ public class Owner : Entity, IAggregateRoot
 
     public void ChangeEmail(string email) => Email = new Email(email);
 
-    public void AddAddress(Address address) => Address = address;
 
     public override bool IsValid()
     {

@@ -1,5 +1,5 @@
 ﻿using System.Linq.Expressions;
-using CarStore.Core.Data;
+using CarStore.Core.Datas.Interfaces;
 using CarStore.Shop.Domain.Interfaces;
 using CarStore.Shop.Domain.Models;
 using CarStore.Shop.Infrastructure.Contexts;

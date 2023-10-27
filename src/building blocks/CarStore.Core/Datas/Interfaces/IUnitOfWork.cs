@@ -1,4 +1,4 @@
-﻿namespace CarStore.Core.Data;
+﻿namespace CarStore.Core.Datas.Interfaces;
 
 public interface IUnitOfWork
 {

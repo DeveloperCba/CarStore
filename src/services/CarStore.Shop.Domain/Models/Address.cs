@@ -6,17 +6,15 @@ namespace CarStore.Shop.Domain.Models;
 
 public class Address : Entity
 {
-    public string Street { get; private set; }
-    public string Number { get; private set; }
-    public string Complement { get; private set; }
-    public string Neighborhood { get; private set; }
-    public string ZipCode { get; private set; }
-    public string City { get; private set; }
-    public string State { get; private set; }
+    public string Street { get; private set; } = null!;
+    public string Number { get; private set; } = null!;
+    public string Complement { get; private set; } = null!;
+    public string Neighborhood { get; private set; } = null!;
+    public string ZipCode { get; private set; } = null!;
+    public string City { get; private set; } = null!;
+    public string State { get; private set; } = null!;
     public Guid OwnerId { get; private set; }
-
-    // EF Relation
-    public Owner Owner { get; protected set; }
+    public Owner Owner { get; protected set; } = null!;
 
     // EF Constructor
     protected Address() { }

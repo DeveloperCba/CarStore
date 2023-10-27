@@ -145,7 +145,7 @@ public static class StringExtension
         return result;
     }
 
-    public static string RemoveCharacters(this string input)
+    public static string? RemoveCharacters(this string input)
     {
         string? resultString;
         try

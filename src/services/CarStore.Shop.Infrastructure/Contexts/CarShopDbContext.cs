@@ -1,11 +1,10 @@
-﻿using CarStore.Core.Data;
-using CarStore.Core.DomainObjects;
+﻿using CarStore.Core.Datas.Interfaces;
 using CarStore.Core.Mediator;
 using CarStore.Core.Messages;
 using CarStore.Shop.Domain.Models;
 using CarStore.Shop.Infrastructure.Extensions;
+using CarStore.Shop.Infrastructure.Mappings;
 using FluentValidation.Results;
-using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace CarStore.Shop.Infrastructure.Contexts;
@@ -14,7 +13,7 @@ public class CarShopDbContext : DbContext, IUnitOfWork
 {
     private readonly IMediatorHandler _mediator;
 
-    //public CarShopDbContext(){}
+     //public CarShopDbContext(){}
     public CarShopDbContext(DbContextOptions<CarShopDbContext> options,
         IMediatorHandler mediator) : base(options)
     {
@@ -38,15 +37,19 @@ public class CarShopDbContext : DbContext, IUnitOfWork
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        //var conn = "Server=pgsql.oficinadev.kinghost.net; Database=oficinadev; Port=5432;User Id=oficinadev;Password=Estadao101322";
-        //optionsBuilder.UseNpgsql(conn, x => x.MigrationsHistoryTable("_AuthMigration"));
+        var conn = "Server=127.0.0.1; Database=CarShopApi; Port=15432;User Id=postgres;Password=MeuDb@123";
+        optionsBuilder.UseNpgsql(conn, x => x.MigrationsHistoryTable("__CarShopApiMigration"));
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Ignore<ValidationResult>();
         modelBuilder.Ignore<Event>();
-        modelBuilder.ApplyConfigurationsFromAssembly(typeof(CarShopDbContext).Assembly);
+        modelBuilder.ApplyConfiguration(new AddressMapping());
+        modelBuilder.ApplyConfiguration(new BrandMapping());
+        modelBuilder.ApplyConfiguration(new ModelMapping());
+        modelBuilder.ApplyConfiguration(new OwnerMapping());
+        modelBuilder.ApplyConfiguration(new VehicleMapping());
     }
 
     public async Task<bool> Commit()
@@ -70,3 +73,8 @@ public class CarShopDbContext : DbContext, IUnitOfWork
 
     }
 }
+
+/*
+    Add-Migration AddTableShop -Context CarShopDbContext -OutputDir "Migrations/CarShop" 
+    Update-Database -Context CarShopDbContext
+*/

@@ -158,26 +158,27 @@ public static class DataExtension
             campo.Append(column.ColumnName);
 
             if (count != totalColumns)
-                campo.Append(";");
+                campo.Append(';');
 
             count++;
         }
         campo.AppendLine();
 
-        var value = string.Empty;
+
         foreach (DataRow dataRow in dataTable.Rows)
         {
             for (int x = 0; x < totalColumns; x++)
             {
-                value = dataRow[x].ToString();
+                var value = dataRow[x].ToString();
+                if(string.IsNullOrEmpty(value)) continue;
 
-                if (value.Contains(";") || value.Contains("\""))
+                if (value.Contains(';') || value.Contains("\""))
                     value = '"' + value.Replace("\"", "\"\"") + '"';
 
                 campo.Append(value);
 
                 if (x != totalColumns - 1)
-                    campo.Append(";");
+                    campo.Append(';');
 
             }
             campo.AppendLine();
@@ -198,10 +199,10 @@ public static class DataExtension
                 if (!dt.Columns.Contains(property.Name))
                     continue;
 
-                Type propertyType = Nullable.GetUnderlyingType(property.PropertyType) != null ? Nullable.GetUnderlyingType(property.PropertyType) : property.PropertyType;
+                Type? propertyType = Nullable.GetUnderlyingType(property.PropertyType) != null ? Nullable.GetUnderlyingType(property.PropertyType) : property.PropertyType;
 
                 if (row[property.Name] != DBNull.Value)
-                    property?.SetValue(generic, Convert.ChangeType(row[property.Name], propertyType));
+                    property?.SetValue(generic, Convert.ChangeType(row[property.Name], propertyType!));
             }
 
             list.Add(generic);

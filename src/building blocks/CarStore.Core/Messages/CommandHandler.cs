@@ -1,4 +1,4 @@
-﻿using CarStore.Core.Data;
+﻿using CarStore.Core.Datas.Interfaces;
 using FluentValidation.Results;
 
 namespace CarStore.Core.Messages;

@@ -1,5 +1,5 @@
 ﻿using System.Linq.Expressions;
-using CarStore.Core.Data;
+using CarStore.Core.Datas.Interfaces;
 using CarStore.Shop.Domain.Interfaces;
 using CarStore.Shop.Domain.Models;
 using CarStore.Shop.Infrastructure.Contexts;
@@ -14,7 +14,7 @@ public class BrandRepository : IBrandRepository
     public BrandRepository(CarShopDbContext context) => _context = context;
     public IUnitOfWork UnitOfWork => _context;
 
-    public async Task<IEnumerable<Brand>> GetAll(Expression<Func<Brand, bool>>? filter = null)
+    public async Task<IEnumerable<Brand>> GetAll(Expression<Func<Brand, bool>> filter = null)
     {
         if (filter != null)
            return  await _context.Brands.Where(filter).ToListAsync();

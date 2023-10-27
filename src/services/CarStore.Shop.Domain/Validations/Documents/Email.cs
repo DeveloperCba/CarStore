@@ -5,7 +5,7 @@ namespace CarStore.Shop.Domain.Validations.Documents;
 
 public class Email
 {
-    public string Address { get; private set; }
+    public string Address { get; private set; } = null!;
     public const int AddressMaxLength = 254;
     public const int AddressMinLength = 5;
 

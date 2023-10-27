@@ -3,7 +3,27 @@
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Contracts\" />
+    <Folder Include="Features\Brand\CommandHandlers\" />
+    <Folder Include="Features\Brand\EventHandlers\" />
+    <Folder Include="Features\Brand\Events\" />
+    <Folder Include="Features\Brand\Requests\" />
+    <Folder Include="Features\Brand\QueriesHandlers\" />
+    <Folder Include="Features\Brand\Queries\" />
+    <Folder Include="Models\Requesties\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.8.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CarStore.Shop.Domain\CarStore.Shop.Domain.csproj" />
+    <ProjectReference Include="..\CarStore.Shop.Infrastructure\CarStore.Shop.Infrastructure.csproj" />
+  </ItemGroup>
 
 </Project>

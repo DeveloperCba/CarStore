@@ -30,28 +30,28 @@ public class OwnerValidation : AbstractValidator<Owner>
         });
 
         
-        RuleFor(c => c.Address.Street)
-            .NotEmpty().WithMessage("The field {PropertyName} needs to be provided")
-            .Length(2, 200).WithMessage("The field {PropertyName} need to be between {MinLength} e {MaxLength} characters");
+        //RuleFor(c => c.Address.Street)
+        //    .NotEmpty().WithMessage("The field {PropertyName} needs to be provided")
+        //    .Length(2, 200).WithMessage("The field {PropertyName} need to be between {MinLength} e {MaxLength} characters");
 
-        RuleFor(c => c.Address.Neighborhood)
-            .NotEmpty().WithMessage("The field {PropertyName} needs to be provided")
-            .Length(2, 100).WithMessage("The field {PropertyName} need to be between {MinLength} e {MaxLength} characters");
+        //RuleFor(c => c.Address.Neighborhood)
+        //    .NotEmpty().WithMessage("The field {PropertyName} needs to be provided")
+        //    .Length(2, 100).WithMessage("The field {PropertyName} need to be between {MinLength} e {MaxLength} characters");
 
-        RuleFor(c => c.Address.ZipCode)
-            .NotEmpty().WithMessage("The field {PropertyName} needs to be provided")
-            .Length(8).WithMessage("The field {PropertyName} need to have {MaxLength} characters");
+        //RuleFor(c => c.Address.ZipCode)
+        //    .NotEmpty().WithMessage("The field {PropertyName} needs to be provided")
+        //    .Length(8).WithMessage("The field {PropertyName} need to have {MaxLength} characters");
 
-        RuleFor(c => c.Address.City)
-            .NotEmpty().WithMessage("The field {PropertyName} needs to be provided")
-            .Length(2, 100).WithMessage("The field {PropertyName} need to be between {MinLength} e {MaxLength} characters");
+        //RuleFor(c => c.Address.City)
+        //    .NotEmpty().WithMessage("The field {PropertyName} needs to be provided")
+        //    .Length(2, 100).WithMessage("The field {PropertyName} need to be between {MinLength} e {MaxLength} characters");
 
-        RuleFor(c => c.Address.State)
-            .NotEmpty().WithMessage("The field {PropertyName} needs to be provided")
-            .Length(2, 50).WithMessage("The field {PropertyName} need to be between {MinLength} e {MaxLength} characters");
+        //RuleFor(c => c.Address.State)
+        //    .NotEmpty().WithMessage("The field {PropertyName} needs to be provided")
+        //    .Length(2, 50).WithMessage("The field {PropertyName} need to be between {MinLength} e {MaxLength} characters");
 
-        RuleFor(c => c.Address.Number)
-            .NotEmpty().WithMessage("The field {PropertyName} needs to be provided")
-            .Length(1, 50).WithMessage("The field {PropertyName} need to be between {MinLength} e {MaxLength} characters");
+        //RuleFor(c => c.Address.Number)
+        //    .NotEmpty().WithMessage("The field {PropertyName} needs to be provided")
+        //    .Length(1, 50).WithMessage("The field {PropertyName} need to be between {MinLength} e {MaxLength} characters");
     }
 }

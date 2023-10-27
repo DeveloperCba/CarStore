@@ -1,12 +1,12 @@
 ﻿using System.Linq.Expressions;
-using CarStore.Core.Data;
+using CarStore.Core.Datas.Interfaces;
 using CarStore.Shop.Domain.Models;
 
 namespace CarStore.Shop.Domain.Interfaces;
 
 public interface IVehicleRepository : IRepository<Vehicle>
 {
-    Task<IEnumerable<Vehicle>> GetAll(Expression<Func<Vehicle, bool>> filter = null);
+    Task<IEnumerable<Vehicle>> GetAll(Expression<Func<Vehicle, bool>>? filter = null);
     Task<Vehicle> GetById(Guid modelId);
     Task  Add(Vehicle model);
     Task Update(Vehicle model);

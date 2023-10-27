@@ -6,8 +6,8 @@ namespace CarStore.Shop.Domain.Models;
 
 public class Vehicle : Entity, IAggregateRoot
 {
-    public string Name { get; private set; }
-    public string Renavam { get; private set; }
+    public string Name { get; private set; } = null!;
+    public string Renavam { get; private set; } = null!;
     public int Kilometer { get; private set; }
     public decimal Price { get; private set; }
     public TypeStatusVehicle Status { get; private set; }

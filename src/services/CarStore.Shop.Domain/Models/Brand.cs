@@ -6,11 +6,11 @@ namespace CarStore.Shop.Domain.Models;
 
 public  class Brand : Entity, IAggregateRoot
 {
-    public string Name { get; private set; }
+    public string Name { get; private set; } = null!;
     public TypeStatus Status { get; private set; }
 
     // EF Relation
-    public Vehicle Vehicle { get; protected set; }
+    public Vehicle Vehicle { get; protected set; } = null!;
     protected Brand() { }
 
     public Brand(string name)

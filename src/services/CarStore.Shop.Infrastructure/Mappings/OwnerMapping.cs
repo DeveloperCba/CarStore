@@ -27,7 +27,6 @@ public class OwnerMapping : EntityMapping<Owner>
                 .HasMaxLength(Email.AddressMaxLength);
         });
 
-        // 1 : 1 => Proprietario : Endereco
-        builder.HasOne(c => c.Address);
+        builder.HasOne(x => x.Address);
     }
 }

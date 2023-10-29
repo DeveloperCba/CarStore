@@ -118,35 +118,35 @@ namespace CarStore.Shop.Infrastructure.Migrations.CarShop
                         new
                         {
                             Id = new Guid("a7e88a2f-f1d3-469b-b8b4-5db97ace8b8d"),
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedAt =DateTime.Now,
                             Name = "Volkswagen",
                             Status = 0
                         },
                         new
                         {
                             Id = new Guid("776e8069-9d90-470e-82aa-e732a4383863"),
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedAt = DateTime.Now,
                             Name = "Toyota",
                             Status = 0
                         },
                         new
                         {
                             Id = new Guid("6283e743-3197-4e9f-a72a-aaa9f1d092e9"),
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedAt = DateTime.Now,
                             Name = "Ford",
                             Status = 0
                         },
                         new
                         {
                             Id = new Guid("5cffedf3-a8b6-46f9-a0d2-9410e43cad99"),
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedAt = DateTime.Now,
                             Name = "Honda",
                             Status = 0
                         },
                         new
                         {
                             Id = new Guid("10b4c883-eb89-4a88-945b-38aa2a1f0f8b"),
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedAt = DateTime.Now,
                             Name = "Hyundai",
                             Status = 0
                         });

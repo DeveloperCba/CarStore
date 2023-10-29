@@ -21,6 +21,7 @@ public class CarShopDbContext : DbContext, IUnitOfWork
         ChangeTracker.AutoDetectChangesEnabled = false;
 
         _mediator = mediator;
+        
     }
 
     public DbSet<Brand> Brands { get; set; }
@@ -73,6 +74,9 @@ public class CarShopDbContext : DbContext, IUnitOfWork
 
     }
 }
+
+
+
 
 /*
     Add-Migration AddTableShop -Context CarShopDbContext -OutputDir "Migrations/CarShop" 

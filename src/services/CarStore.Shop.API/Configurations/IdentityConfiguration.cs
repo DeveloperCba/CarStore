@@ -10,6 +10,8 @@ public static class IdentityConfiguration
     public static IServiceCollection AddIdentityConfiguration(this IServiceCollection services,
         IConfiguration configuration)
     {
+        AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+
         var conn = configuration.GetConnectionString("PostgresConnection");
         AddDbAplicationUserIdentity(services, conn);
         AddDbLog(services, conn);

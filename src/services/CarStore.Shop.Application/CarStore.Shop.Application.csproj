@@ -7,10 +7,8 @@
 
   <ItemGroup>
     <Folder Include="Contracts\" />
-    <Folder Include="Features\Brand\CommandHandlers\" />
     <Folder Include="Features\Brand\EventHandlers\" />
     <Folder Include="Features\Brand\Events\" />
-    <Folder Include="Features\Brand\Requests\" />
     <Folder Include="Features\Brand\QueriesHandlers\" />
     <Folder Include="Features\Brand\Queries\" />
     <Folder Include="Models\Requesties\" />

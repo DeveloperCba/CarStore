@@ -31,11 +31,41 @@ namespace CarStore.Shop.API.Controllers.V1
         [ProducesResponseType(typeof(ResultResponse), (int)HttpStatusCode.NotFound)]
         [ProducesResponseType(typeof(ResultResponse), (int)HttpStatusCode.BadRequest)]
         [ProducesResponseType(typeof(ResultResponse), (int)HttpStatusCode.InternalServerError)]
-        public async Task<IActionResult> Create(BrandRequest request)
+        public async Task<IActionResult> Create(CreateBrandRequest request)
         {
             if (!ModelState.IsValid) return CustomResponse(ModelState);
 
             var response = await _mediator.Send(_mapper.Map<CreateBrandCommand>(request));
+            return CustomResponse(response);
+        }
+
+        [AllowAnonymous]
+        [HttpPut()]
+        [ProducesResponseType(typeof(BrandDto), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(ResultResponse), (int)HttpStatusCode.UnprocessableEntity)]
+        [ProducesResponseType(typeof(ResultResponse), (int)HttpStatusCode.NotFound)]
+        [ProducesResponseType(typeof(ResultResponse), (int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType(typeof(ResultResponse), (int)HttpStatusCode.InternalServerError)]
+        public async Task<IActionResult> Update(UpdateBrandRequest request)
+        {
+            if (!ModelState.IsValid) return CustomResponse(ModelState);
+
+            var response = await _mediator.Send(_mapper.Map<UpdateBrandCommand>(request));
+            return CustomResponse(response);
+        }
+
+        [AllowAnonymous]
+        [HttpPut("update-status")]
+        [ProducesResponseType(typeof(BrandDto), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(ResultResponse), (int)HttpStatusCode.UnprocessableEntity)]
+        [ProducesResponseType(typeof(ResultResponse), (int)HttpStatusCode.NotFound)]
+        [ProducesResponseType(typeof(ResultResponse), (int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType(typeof(ResultResponse), (int)HttpStatusCode.InternalServerError)]
+        public async Task<IActionResult> UpdateStatus(UpdateStatusBrandRequest request)
+        {
+            if (!ModelState.IsValid) return CustomResponse(ModelState);
+
+            var response = await _mediator.Send(_mapper.Map<UpdateStatusBrandCommand>(request));
             return CustomResponse(response);
         }
 

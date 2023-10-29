@@ -28,7 +28,7 @@ public static class ApiConfiguration
         {
             app.UseDeveloperExceptionPage();
         }
-           
+
         app.UseCorsCustom(configuration);
 
         app.UseStaticFiles();
@@ -39,7 +39,7 @@ public static class ApiConfiguration
 
         app.UseAuthConfiguration();
 
-          app.UseExceptionMiddleware();
+        app.UseExceptionMiddleware();
 
         app.UseEndpoints(endpoints =>
         {

@@ -3,8 +3,8 @@ using MediatR;
 
 namespace CarStore.Shop.Application.Features.Brand.Commands;
 
-public class CreateBrandCommand : IRequest<BrandDto>
+public class UpdateStatusBrandCommand : IRequest<BrandDto>
 {
-    public string Name { get; set; }
+    public Guid Id { get; set; }
     public int Status { get; set; }
 }

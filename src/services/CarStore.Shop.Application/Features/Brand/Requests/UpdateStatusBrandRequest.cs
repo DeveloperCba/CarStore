@@ -2,9 +2,9 @@
 
 namespace CarStore.Shop.Application.Features.Brand.Requests;
 
-public class BrandRequest
+public class UpdateStatusBrandRequest
 {
     [Required(ErrorMessage = "The {PropertyName} field is mandatory.")]
-    public required string Name { get; set; }
+    public required Guid Id { get; set; }
     public int Status { get; set; }
 }

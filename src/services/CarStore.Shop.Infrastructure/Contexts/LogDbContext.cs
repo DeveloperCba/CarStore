@@ -40,7 +40,7 @@ public class LogDbContext : DbContext, IUnitOfWork
         {
 
             if (entry.State == EntityState.Added)
-                entry.Property("CreatedAt").CurrentValue = DateTime.UtcNow;
+                entry.Property("CreatedAt").CurrentValue = DateTime.Now;
 
             if (entry.State == EntityState.Modified)
                 entry.Property("CreatedAt").IsModified = false;

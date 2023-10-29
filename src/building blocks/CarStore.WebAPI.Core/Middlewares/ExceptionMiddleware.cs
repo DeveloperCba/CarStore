@@ -24,7 +24,7 @@ public class ExceptionMiddleware
     }
 
     public async Task InvokeAsync(
-        HttpContext context//,LogErrorRepository logErrorRepository
+        HttpContext context,ILogErrorRepository logErrorRepository
     )
     {
         try
@@ -86,15 +86,15 @@ public class ExceptionMiddleware
 
             context.Response.StatusCode = statusCode;
 
-            //await logErrorRepository.Add(new LogError
-            //{
-            //    ErrorFull = ex.StackTrace,
-            //    Error = ex.Message,
-            //    Method = context.Request?.Method.ToString().Trim(),
-            //    Path = context.Request?.Path.ToString().Trim(),
-            //    Query = WebUtility.UrlDecode(context.Request?.QueryString.ToString().Trim()),
-            //});
-            //await logErrorRepository.UnitOfWork.Commit();
+            await logErrorRepository.Add(new LogError
+            {
+                ErrorFull = ex.StackTrace,
+                Error = ex.Message,
+                Method = context.Request?.Method.ToString().Trim(),
+                Path = context.Request?.Path.ToString().Trim(),
+                Query = WebUtility.UrlDecode(context.Request?.QueryString.ToString().Trim()),
+            });
+            await logErrorRepository.UnitOfWork.Commit();
 
             var resultErrors = new ResultResponse
             {

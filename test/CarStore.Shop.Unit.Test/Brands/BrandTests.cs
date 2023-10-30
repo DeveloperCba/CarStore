@@ -4,9 +4,8 @@ using FluentAssertions;
 
 namespace CarStore.Shop.Unit.Test.Brands;
 
-public class BrandTest
+public class BrandTests
 {
-
 
     [Fact(DisplayName = "Valid brand")]
     [Trait("Brand","Validation")]

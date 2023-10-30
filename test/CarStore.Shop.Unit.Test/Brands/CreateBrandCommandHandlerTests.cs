@@ -6,6 +6,7 @@ using CarStore.Shop.Application.Features.Brand.Dtos;
 using CarStore.Shop.Application.Mappings;
 using CarStore.Shop.Domain.Interfaces;
 using CarStore.Shop.Domain.Models;
+using Core.Test.Configurations;
 using FluentAssertions;
 using Moq;
 
@@ -15,16 +16,10 @@ public class CreateBrandCommandHandlerTests
 {
 
     private readonly IMapper _mapper;
-    private readonly MapperConfiguration _config;
 
     public CreateBrandCommandHandlerTests()
     {
-        _config = new MapperConfiguration(cfg =>
-        {
-            cfg.AddProfile(new CommandToEntity());
-            cfg.AddProfile(new EntityToDto());
-        });
-        _mapper = _config.CreateMapper();
+        _mapper = AutoMapperConfiguration.GetMapperConfiguration();
     }
 
     [Fact(DisplayName = "Create new Brand successfully")]

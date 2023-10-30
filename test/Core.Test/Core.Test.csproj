@@ -11,4 +11,8 @@
     <PackageReference Include="Moq.AutoMock" Version="3.5.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\services\CarStore.Shop.Application\CarStore.Shop.Application.csproj" />
+  </ItemGroup>
+
 </Project>

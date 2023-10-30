@@ -22,4 +22,10 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\services\CarStore.Shop.Application\CarStore.Shop.Application.csproj" />
+    <ProjectReference Include="..\..\src\services\CarStore.Shop.Infrastructure\CarStore.Shop.Infrastructure.csproj" />
+    <ProjectReference Include="..\Core.Test\Core.Test.csproj" />
+  </ItemGroup>
+
 </Project>

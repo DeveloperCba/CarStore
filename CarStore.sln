@@ -13,9 +13,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{F140529E-3
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{2A8168F0-3AE4-4FDF-999C-97E475E18F9D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarStore.Core", "src\building blocks\CarStore.Core\CarStore.Core.csproj", "{5FA6CB4A-081B-48C5-AAD3-25646F521969}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarStore.Core", "src\building blocks\CarStore.Core\CarStore.Core.csproj", "{5FA6CB4A-081B-48C5-AAD3-25646F521969}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarStore.WebAPI.Core", "src\building blocks\CarStore.WebAPI.Core\CarStore.WebAPI.Core.csproj", "{B39A0CCE-EB65-4097-9048-FDCAB21A221B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarStore.WebAPI.Core", "src\building blocks\CarStore.WebAPI.Core\CarStore.WebAPI.Core.csproj", "{B39A0CCE-EB65-4097-9048-FDCAB21A221B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E894F615-D381-4ADF-A2F0-BE94BEC8143C}"
 	ProjectSection(SolutionItems) = preProject
@@ -23,27 +23,27 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		sonar.bat = sonar.bat
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarStore.Shop.Domain", "src\services\CarStore.Shop.Domain\CarStore.Shop.Domain.csproj", "{B2882672-C2B1-4DAF-B61D-A2B2DFE2609A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarStore.Shop.Domain", "src\services\CarStore.Shop.Domain\CarStore.Shop.Domain.csproj", "{B2882672-C2B1-4DAF-B61D-A2B2DFE2609A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarStore.Shop.Infrastructure", "src\services\CarStore.Shop.Infrastructure\CarStore.Shop.Infrastructure.csproj", "{9F1DBC14-05B8-4EA0-9AA5-9BEE127BF78F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarStore.Shop.Infrastructure", "src\services\CarStore.Shop.Infrastructure\CarStore.Shop.Infrastructure.csproj", "{9F1DBC14-05B8-4EA0-9AA5-9BEE127BF78F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarStore.Shop.Application", "src\services\CarStore.Shop.Application\CarStore.Shop.Application.csproj", "{78E03136-9CB7-4504-98DF-DCCC0243CCBE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarStore.Shop.Application", "src\services\CarStore.Shop.Application\CarStore.Shop.Application.csproj", "{78E03136-9CB7-4504-98DF-DCCC0243CCBE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarStore.Shop.API", "src\services\CarStore.Shop.API\CarStore.Shop.API.csproj", "{010D13AC-4B75-4419-8091-5FD62633DFBA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarStore.Shop.API", "src\services\CarStore.Shop.API\CarStore.Shop.API.csproj", "{010D13AC-4B75-4419-8091-5FD62633DFBA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarStore.Shop.WebApp", "src\web\CarStore.Shop.WebApp\CarStore.Shop.WebApp.csproj", "{FEF44109-E201-4802-841F-DEEBDDCD0102}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarStore.Shop.WebApp", "src\web\CarStore.Shop.WebApp\CarStore.Shop.WebApp.csproj", "{FEF44109-E201-4802-841F-DEEBDDCD0102}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{ED266C91-4209-4514-BD45-1CA6F70DDA31}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Test", "test\Core.Test\Core.Test.csproj", "{E5AADF92-DB33-4A1E-898D-52FCB31AF263}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.Test", "test\Core.Test\Core.Test.csproj", "{E5AADF92-DB33-4A1E-898D-52FCB31AF263}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Integration", "Integration", "{25894EF3-FB82-42DC-AAC3-377B43285040}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarStore.Shop.Integration.Test", "test\CarStore.Shop.Integration.Test\CarStore.Shop.Integration.Test.csproj", "{E2095B67-B308-42FE-BCAA-EBA4A6B4263C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarStore.Shop.Integration.Test", "test\CarStore.Shop.Integration.Test\CarStore.Shop.Integration.Test.csproj", "{E2095B67-B308-42FE-BCAA-EBA4A6B4263C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarStore.Shop.Unit.Test", "test\CarStore.Shop.Unit.Test\CarStore.Shop.Unit.Test.csproj", "{0C8C7BF0-26F9-461C-A7A6-4E84D6D41388}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarStore.Shop.Unit.Test", "test\CarStore.Shop.Unit.Test\CarStore.Shop.Unit.Test.csproj", "{0C8C7BF0-26F9-461C-A7A6-4E84D6D41388}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Unit", "Unit", "{AE90F37F-BBE6-4792-B38E-F2BEEC6C28CC}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Units", "Units", "{AE90F37F-BBE6-4792-B38E-F2BEEC6C28CC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -18,6 +18,7 @@ public class Brand : Entity, IAggregateRoot
     public Brand(string name)
     {
         Name = name;
+        Active();
         if (!IsValid()) throw new DomainException("Brand invalid!");
     }
 

@@ -32,6 +32,11 @@ public class Brand : Entity, IAggregateRoot
         return Name.ToUpper() == name.ToUpper();
     }
 
+    public void SetName(string name)
+    {
+        Name = name;
+    }
+
     public void SetStatus(TypeStatus status)
     {
         switch (status)

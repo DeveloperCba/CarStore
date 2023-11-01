@@ -8,14 +8,14 @@ public class UpdateBrandCommandValidation : AbstractValidator<UpdateBrandCommand
     public UpdateBrandCommandValidation()
     {
         RuleFor(c => c.Id)
-            .NotEmpty().WithMessage("The field {PropertyName} needs to be provided")
-            .Must(BeValidGuid).WithMessage("Invalid  {PropertyName} format.")
+            .NotEmpty().WithMessage("The field {PropertyName} need to be provided")
+            //.Must(BeValidGuid).WithMessage("Invalid  {PropertyName} format.")
             ;
 
 
 
         RuleFor(c => c.Name)
-            .NotEmpty().WithMessage("The field {PropertyName} needs to be provided")
+            .NotEmpty().WithMessage("The field {PropertyName} need to be provided")
             .Length(2, 50).WithMessage("The field {PropertyName} need to be between {MinLength} e {MaxLength} characters");
 
         RuleFor(c => c.Status)

@@ -14,24 +14,25 @@ using Moq;
 
 namespace CarStore.Shop.Unit.Test.Brands;
 
-public class CreateBrandCommandHandlerTests
+public class UpdateBrandCommandHandlerTests
 {
 
     private readonly IMapper _mapper;
 
-    public CreateBrandCommandHandlerTests()
+    public UpdateBrandCommandHandlerTests()
     {
         _mapper = AutoMapperConfiguration.GetMapperConfiguration();
     }
 
-    [Fact(DisplayName = "Create new Brand Validation successfully")]
-    [Trait("Brand Application", "Create - Create Brand Validation")]
-    public async Task Create_Brand_ValidationShouldBe_Successfully()
+    [Fact(DisplayName = "Update new Brand Validation successfully")]
+    [Trait("Brand Application", "Update - Update Brand Validation")]
+    public async Task Update_Brand_ValidationShouldBe_Successfully()
     {
         // Arrange
-        var validator = new CreateBrandCommandValidation();
-        var command = new CreateBrandCommand
+        var validator = new UpdateBrandCommandValidation();
+        var command = new UpdateBrandCommand
         {
+            Id = Guid.NewGuid(),
             Name = "Ford",
             Status = (int)TypeStatus.Active
         };
@@ -40,42 +41,46 @@ public class CreateBrandCommandHandlerTests
         var result = await validator.TestValidateAsync(command);
 
         // Assert
+        result.ShouldNotHaveValidationErrorFor(t => t.Id);
         result.ShouldNotHaveValidationErrorFor(t => t.Name);
         result.ShouldNotHaveValidationErrorFor(t => t.Status);
 
     }
 
-    [Fact(DisplayName = "Create new Brand Validation Invalid")]
-    [Trait("Brand Application", "Create - Create Brand Validation")]
-    public async Task Create_Brand_ValidationShouldBe_Invalid()
+    [Fact(DisplayName = "Update new Brand Validation Invalid")]
+    [Trait("Brand Application", "Update - Update Brand Validation")]
+    public async Task Update_Brand_ValidationShouldBe_Invalid()
     {
         // Arrange
-        var validator = new CreateBrandCommandValidation();
-        var command = new CreateBrandCommand
+        var validator = new UpdateBrandCommandValidation();
+        var command = new UpdateBrandCommand
         {
+            Id = Guid.Empty,
             Name = "",
-            Status =  -1
+            Status = -1
         };
 
         // Act
         var result = await validator.TestValidateAsync(command);
 
         // Assert
-        result.ShouldHaveValidationErrorFor(t => t.Name).WithErrorMessage("The field Name needs to be provided");
+        result.ShouldHaveValidationErrorFor(t => t.Id).WithErrorMessage("The field Id need to be provided");
+        result.ShouldHaveValidationErrorFor(t => t.Name).WithErrorMessage("The field Name need to be provided");
         result.ShouldHaveValidationErrorFor(t => t.Name).WithErrorMessage("The field Name need to be between 2 e 50 characters");
         result.ShouldHaveValidationErrorFor(t => t.Status);
 
     }
 
-    [Fact(DisplayName = "Create new Brand successfully")]
-    [Trait("Brand Application", "Create - Create Brand Command Handler")]
-    public async Task Create_Brand_ShouldBe_Successfully()
+    [Fact(DisplayName = "Update Brand successfully")]
+    [Trait("Brand Application", "Create - Update Brand Command Handler")]
+    public async Task Update_Brand_ShouldBe_Successfully()
     {
         // Arrange
         var brandService = new Mock<IBrandService>();
-        var commandHandler = new CreateBrandCommandHandler(_mapper, brandService.Object);
-        var command = new CreateBrandCommand
+        var commandHandler = new UpdateBrandCommandHandler(_mapper, brandService.Object);
+        var command = new UpdateBrandCommand
         {
+            Id = Guid.NewGuid(),
             Name = "Ford",
             Status = (int)TypeStatus.Active
         };
@@ -88,16 +93,17 @@ public class CreateBrandCommandHandlerTests
 
     }
 
-    [Fact(DisplayName = "Create new Brand Should be null")]
+    [Fact(DisplayName = "Update Brand Should be null")]
     [Trait("Brand Application", "Create - Create Brand Command Handler")]
     public async Task Create_Brand_ShouldBe_Invalid()
     {
         // Arrange
         var mapper = new Mock<IMapper>();
         var brandService = new Mock<IBrandService>();
-        var commandHandler = new CreateBrandCommandHandler(mapper.Object, brandService.Object);
-        var command = new CreateBrandCommand
+        var commandHandler = new UpdateBrandCommandHandler(mapper.Object, brandService.Object);
+        var command = new UpdateBrandCommand
         {
+            Id = Guid.NewGuid(),
             Name = "Ford",
             Status = (int)TypeStatus.Active
         };

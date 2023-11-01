@@ -24,8 +24,7 @@ public class UpdateBrandCommandHandler : Command, IRequestHandler<UpdateBrandCom
         if (model == null)
             throw new NotFoundException(nameof(Brand), request?.Name);
 
-
-
+        
         await _brandService.Update(model);
         return _mapper.Map<BrandDto>(model);
     }

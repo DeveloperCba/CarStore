@@ -9,6 +9,7 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
+using CarStore.Shop.Application.Features.Brand.Queries;
 
 namespace CarStore.Shop.API.Controllers.V1
 {
@@ -22,6 +23,36 @@ namespace CarStore.Shop.API.Controllers.V1
         {
             _mediator = mediator;
             _mapper = mapper;
+        }
+
+        [AllowAnonymous]
+        [HttpGet()]
+        [ProducesResponseType(typeof(BrandDto), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(ResultResponse), (int)HttpStatusCode.UnprocessableEntity)]
+        [ProducesResponseType(typeof(ResultResponse), (int)HttpStatusCode.NotFound)]
+        [ProducesResponseType(typeof(ResultResponse), (int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType(typeof(ResultResponse), (int)HttpStatusCode.InternalServerError)]
+        public async Task<IActionResult> GetAll()
+        {
+            if (!ModelState.IsValid) return CustomResponse(ModelState);
+
+            var response = await _mediator.Send(new GetBrandAllQuery());
+            return CustomResponse(response);
+        }
+
+        [AllowAnonymous]
+        [HttpGet("{id}")]
+        [ProducesResponseType(typeof(BrandDto), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(ResultResponse), (int)HttpStatusCode.UnprocessableEntity)]
+        [ProducesResponseType(typeof(ResultResponse), (int)HttpStatusCode.NotFound)]
+        [ProducesResponseType(typeof(ResultResponse), (int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType(typeof(ResultResponse), (int)HttpStatusCode.InternalServerError)]
+        public async Task<IActionResult> GetById(string id)
+        {
+            if (!ModelState.IsValid) return CustomResponse(ModelState);
+
+            var response = await _mediator.Send(new GetBrandByIdQuery{Id = id});
+            return CustomResponse(response);
         }
 
         [AllowAnonymous]

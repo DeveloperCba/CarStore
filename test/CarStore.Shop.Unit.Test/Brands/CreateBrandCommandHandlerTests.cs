@@ -9,15 +9,14 @@ using CarStore.Shop.Domain.Models;
 using Core.Test.Configurations;
 using FluentAssertions;
 using FluentValidation.TestHelper;
+using MediatR;
 using Moq;
 
 namespace CarStore.Shop.Unit.Test.Brands;
 
 public class CreateBrandCommandHandlerTests
 {
-
     private readonly IMapper _mapper;
-
     public CreateBrandCommandHandlerTests()
     {
         _mapper = AutoMapperConfiguration.GetMapperConfiguration();
@@ -71,8 +70,9 @@ public class CreateBrandCommandHandlerTests
     public async Task Create_Brand_ShouldBe_Successfully()
     {
         // Arrange
+        var mediator = new Mock<IMediator>();
         var brandService = new Mock<IBrandService>();
-        var commandHandler = new CreateBrandCommandHandler(_mapper, brandService.Object);
+        var commandHandler = new CreateBrandCommandHandler(_mapper, brandService.Object, mediator.Object);
         var command = new CreateBrandCommand
         {
             Name = "Ford",
@@ -92,9 +92,10 @@ public class CreateBrandCommandHandlerTests
     public async Task Create_Brand_ShouldBe_Invalid()
     {
         // Arrange
+        var mediator = new Mock<IMediator>();
         var mapper = new Mock<IMapper>();
         var brandService = new Mock<IBrandService>();
-        var commandHandler = new CreateBrandCommandHandler(mapper.Object, brandService.Object);
+        var commandHandler = new CreateBrandCommandHandler(mapper.Object, brandService.Object, mediator.Object);
         var command = new CreateBrandCommand
         {
             Name = "Ford",

@@ -1,8 +1,6 @@
-﻿using System.Reflection.Metadata.Ecma335;
-using CarStore.Core.DomainObjects;
+﻿using CarStore.Core.DomainObjects;
 using CarStore.Core.DomainObjects.Exceptions;
 using CarStore.Shop.Domain.Validations;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace CarStore.Shop.Domain.Models;
 

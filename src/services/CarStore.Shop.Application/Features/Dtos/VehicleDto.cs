@@ -1,4 +1,5 @@
-﻿using CarStore.Shop.Domain.Models;
+﻿using CarStore.Shop.Application.Features.Owner.Dtos;
+using CarStore.Shop.Domain.Models;
 
 namespace CarStore.Shop.Application.Features.Brand.Dtos;
 

@@ -1,18 +1,27 @@
 ﻿using CarStore.Core.DomainObjects.Exceptions;
 using CarStore.Shop.Domain.Models;
+using CarStore.Shop.Unit.Test.Brands.Configurations;
 using FluentAssertions;
 
 namespace CarStore.Shop.Unit.Test.Brands;
 
+[Collection(nameof(BrandTestsCollection))]
+
 public class BrandTests
 {
+    private readonly BrandTestsFixture _brandTestsFixture;
+
+    public BrandTests(BrandTestsFixture brandTestsFixture)
+    {
+        _brandTestsFixture = brandTestsFixture;
+    }
 
     [Fact(DisplayName = "Valid brand")]
     [Trait("Brand","Validation")]
     public void Brand_ShouldBeValid_ReturnTrue()
     {
         // Arrange
-        var entity = new Brand("Ford");
+        var entity = _brandTestsFixture.GetBrand();
 
         // Act
         var result = entity.IsValid();
@@ -35,7 +44,7 @@ public class BrandTests
     public void  Status_ShouldBeValid_ReturnTrue()
     {
         // Arrange
-        var entity = new Brand("Ford");
+        var entity = _brandTestsFixture.GetBrand(); 
         var status = TypeStatus.Active;
 
         // Act
@@ -51,7 +60,7 @@ public class BrandTests
     public void Status_ShouldBeInvalid_ReturnFalse()
     {
         // Arrange
-        var entity = new Brand("Ford");
+        var entity = _brandTestsFixture.GetBrand();
         var status = (TypeStatus)5;
 
         // Act
@@ -67,7 +76,7 @@ public class BrandTests
     public void Name_ShouldBeDifferent_ReturnFalse()
     {
         // Arrange
-        var entity = new Brand("Ford");
+        var entity = _brandTestsFixture.GetBrand();
 
         // Act
         var result = entity.IsUpdateName("Toyota");
@@ -82,10 +91,10 @@ public class BrandTests
     public void Name_ShouldBeDifferent_ReturnTrue()
     {
         // Arrange
-        var entity = new Brand("Ford");
+        var entity = _brandTestsFixture.GetBrand();
 
         // Act
-        var result = entity.IsUpdateName("Ford");
+        var result = entity.IsUpdateName(entity.Name);
 
         // Assert
         result.Should().BeTrue();
@@ -97,10 +106,10 @@ public class BrandTests
     public void Status_CheckExchangeStatus_ReturnNewStatus()
     {
         // Arrange
-        var entity = new Brand("Ford");
+        var entity = _brandTestsFixture.GetBrand();
 
         // Act
-         entity.SetStatus(TypeStatus.Canceled);
+        entity.SetStatus(TypeStatus.Canceled);
 
         // Assert
         entity.Status.Should().Be(TypeStatus.Canceled);

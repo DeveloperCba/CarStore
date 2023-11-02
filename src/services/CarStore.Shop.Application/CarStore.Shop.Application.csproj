@@ -11,6 +11,8 @@
     <Folder Include="Features\Brand\Events\" />
     <Folder Include="Features\Brand\QueriesHandlers\" />
     <Folder Include="Features\Brand\Queries\" />
+    <Folder Include="Features\Owner\Requests\" />
+    <Folder Include="Features\Vehicle\" />
     <Folder Include="Models\Requesties\" />
   </ItemGroup>
 

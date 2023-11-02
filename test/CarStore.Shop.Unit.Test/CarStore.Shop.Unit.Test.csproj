@@ -28,4 +28,8 @@
     <ProjectReference Include="..\Core.Test\Core.Test.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Brands\Configurations\" />
+  </ItemGroup>
+
 </Project>

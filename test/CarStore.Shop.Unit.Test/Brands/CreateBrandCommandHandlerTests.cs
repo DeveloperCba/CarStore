@@ -4,7 +4,6 @@ using CarStore.Shop.Application.Features.Brand.CommandHandlers;
 using CarStore.Shop.Application.Features.Brand.Commands;
 using CarStore.Shop.Application.Features.Brand.Dtos;
 using CarStore.Shop.Application.Features.Brand.Validators;
-using CarStore.Shop.Application.Mappings;
 using CarStore.Shop.Domain.Interfaces;
 using CarStore.Shop.Domain.Models;
 using Core.Test.Configurations;
@@ -103,7 +102,7 @@ public class CreateBrandCommandHandlerTests
         };
 
         // Act and Assert
-        var result = Assert.Throws<NotFoundException>(() => commandHandler.Handle(command, CancellationToken.None).GetAwaiter().GetResult());
+        var result = await Assert.ThrowsAsync<NotFoundException>(() => commandHandler.Handle(command, CancellationToken.None));
 
     }
 }

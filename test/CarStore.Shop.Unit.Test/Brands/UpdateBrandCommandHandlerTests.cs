@@ -4,7 +4,6 @@ using CarStore.Shop.Application.Features.Brand.CommandHandlers;
 using CarStore.Shop.Application.Features.Brand.Commands;
 using CarStore.Shop.Application.Features.Brand.Dtos;
 using CarStore.Shop.Application.Features.Brand.Validators;
-using CarStore.Shop.Application.Mappings;
 using CarStore.Shop.Domain.Interfaces;
 using CarStore.Shop.Domain.Models;
 using Core.Test.Configurations;
@@ -94,8 +93,8 @@ public class UpdateBrandCommandHandlerTests
     }
 
     [Fact(DisplayName = "Update Brand Should be null")]
-    [Trait("Brand Application", "Create - Create Brand Command Handler")]
-    public async Task Create_Brand_ShouldBe_Invalid()
+    [Trait("Brand Application", "Update - Update Brand Command Handler")]
+    public async Task Update_Brand_ShouldBe_Invalid()
     {
         // Arrange
         var mapper = new Mock<IMapper>();
@@ -109,7 +108,8 @@ public class UpdateBrandCommandHandlerTests
         };
 
         // Act and Assert
-        var result = Assert.Throws<NotFoundException>(() => commandHandler.Handle(command, CancellationToken.None).GetAwaiter().GetResult());
+        var result = Assert.ThrowsAsync<NotFoundException>(() => commandHandler.Handle(command, CancellationToken.None));
 
     }
 }
+

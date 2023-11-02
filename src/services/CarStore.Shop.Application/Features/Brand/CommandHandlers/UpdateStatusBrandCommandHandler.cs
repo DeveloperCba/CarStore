@@ -12,12 +12,10 @@ namespace CarStore.Shop.Application.Features.Brand.CommandHandlers;
 public class UpdateStatusBrandCommandHandler : Command, IRequestHandler<UpdateStatusBrandCommand, BrandDto>
 {
     private readonly IMapper _mapper;
-    private readonly IBrandService _brandService;
     private readonly IBrandRepository _brandRepository;
-    public UpdateStatusBrandCommandHandler(IMapper mapper, IBrandService brandService, IBrandRepository brandRepository)
+    public UpdateStatusBrandCommandHandler(IMapper mapper, IBrandRepository brandRepository)
     {
         _mapper = mapper;
-        _brandService = brandService;
         _brandRepository = brandRepository;
     }
     public async Task<BrandDto> Handle(UpdateStatusBrandCommand request, CancellationToken cancellationToken)
